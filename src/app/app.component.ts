@@ -120,7 +120,16 @@ export class AppComponent implements OnInit {
     // this.animalClassTesting();
     // this.classCompatabilityTesting();
     // this.extendedDerivedClassTesting();
-    this.protectedTesting();
+    // this.protectedTesting();
+
+    // Testing generics
+    const postions: number[] = [234, 245, 23, 534];
+    const colors: string[] = ['red', 'blue', 'green', 'yellow'];
+    console.log('random number selected: ',  this.randomIntElem(postions)  );
+    console.log(  'random string selected', this.randomStrElem(colors)  );
+
+    console.log('random postion selected from randomElem', this.randomElem(postions));
+    console.log('random color selected from randomElem', this.randomElem(colors));
   }
 
   classTesting() {
@@ -164,4 +173,23 @@ export class AppComponent implements OnInit {
     const person = new Person('Patrick');
     console.log(person);
   }
+
+  // Generics
+
+  randomIntElem(arr: number[]): number {
+    const randomIndex = Math.floor(Math.random() * arr.length);
+    return arr[randomIndex];
+  }
+
+  randomStrElem(arr: string[]): string {
+    const randomIndex = Math.floor(Math.random() * arr.length);
+    return arr[randomIndex];
+  }
+
+  randomElem(arr: any[]): any {
+    const randomIndex = Math.floor(Math.random() * arr.length);
+    return arr[randomIndex];
+  }
+
+  // End generics
 }

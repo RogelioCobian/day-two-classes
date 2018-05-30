@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+// Classes
 class Greeting {
   message: string;
   constructor(message: string) {
@@ -81,7 +82,8 @@ class Poodle extends Dog {
   }
 
   move() {
-    let moving = super.move();
+    // It should be let
+    const moving = super.move();
     console.log('poodle is walking');
   }
 }
@@ -106,6 +108,34 @@ class Worker extends Person {
     return `My name is ${this.name} and I work in ${this.department}.`;
   }
 }
+// End Classes
+
+
+
+// Start Interface
+
+interface Stuff {
+  name: string;
+  age: number;
+  department?: string;
+
+  foo?(s: string);
+  // foo?(n: number): number;
+}
+
+class StuffTwo implements Stuff {
+  name: string;
+  age: number;
+
+  foo?(s: string) {
+    this.name = s;
+  }
+}
+
+
+// End Interface
+
+
 
 @Component({
   selector: 'app-root',
@@ -120,8 +150,13 @@ export class AppComponent implements OnInit {
     // this.animalClassTesting();
     // this.classCompatabilityTesting();
     // this.extendedDerivedClassTesting();
-    this.protectedTesting();
+    // this.protectedTesting();
+
+    this.interfaceTesting({name: 'xyz', age: 25});
   }
+
+
+  // Class Testing
 
   classTesting() {
     const greeter = new Greeting('World!');
@@ -163,5 +198,18 @@ export class AppComponent implements OnInit {
 
     const person = new Person('Patrick');
     console.log(person);
+  }
+
+  // End Class Testing
+
+  // Interface Testing
+
+  interfaceTesting(x: Stuff) {
+  console.log(`${x.name} is ${x.age} years old and works in ${x.department}.`);
+  // x.foo(5);
+
+  const stuff = new StuffTwo();
+  stuff.foo('test');
+  console.log(stuff.name);
   }
 }

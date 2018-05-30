@@ -107,6 +107,22 @@ class Worker extends Person {
   }
 }
 
+// modules
+module Shapes {
+  export class Rectangle {
+
+
+    // constructor(height: number, width: number) {
+
+    // }
+
+    constructor(public height: number, public width: number) {}
+  }
+  export const rect1 = new Rectangle(10, 4);
+}
+
+// end modules
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -120,7 +136,14 @@ export class AppComponent implements OnInit {
     // this.animalClassTesting();
     // this.classCompatabilityTesting();
     // this.extendedDerivedClassTesting();
-    this.protectedTesting();
+    // this.protectedTesting();
+
+    // Testing modules
+
+    const rect2 = new Shapes.Rectangle(20, 10);
+    console.log(rect2);
+    // console.log(Shapes.rect1); //not accessable since rect1 is not exported.
+
   }
 
   classTesting() {
